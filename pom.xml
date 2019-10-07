@@ -14,8 +14,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <accumulo.version>1.8.1</accumulo.version>
-        <hadoop.version>2.7.3</hadoop.version>
+        <accumulo.version>2.0.0</accumulo.version>
+        <hadoop.version>3.2.0</hadoop.version>
     </properties>
 
     <build>
@@ -24,8 +24,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.1</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>1.11</source>
+          <target>1.11</target>
           <optimize>true</optimize>
           <encoding>UTF-8</encoding>
         </configuration>

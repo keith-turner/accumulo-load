@@ -3,12 +3,13 @@ package acbase;
 import java.io.InputStream;
 import java.util.Properties;
 
-import org.apache.accumulo.core.client.Connector;
-import org.apache.accumulo.core.client.ZooKeeperInstance;
-import org.apache.accumulo.core.client.security.tokens.PasswordToken;
+import org.apache.accumulo.core.client.Accumulo;
+import org.apache.accumulo.core.client.AccumuloClient;
 
 public abstract class CmdUtil {
-  public static Connector getConnector() throws Exception {
+  public static AccumuloClient getConnector() throws Exception {
+    
+    
     Properties props = new Properties();
     try (InputStream propsFile = CmdUtil.class.getResourceAsStream("/accumulo-client.properties")) {
       if(propsFile == null) {
@@ -17,7 +18,6 @@ public abstract class CmdUtil {
       props.load(propsFile);
     }
 
-    ZooKeeperInstance zki = new ZooKeeperInstance(props.getProperty("accumulo.instance"), props.getProperty("accumulo.zookeepers"));
-    return zki.getConnector(props.getProperty("accumulo.user"), new PasswordToken(props.getProperty("accumulo.password")));
+    return Accumulo.newClient().from(props).build();
   }
 }
