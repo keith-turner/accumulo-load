@@ -32,8 +32,8 @@ public class Summarize {
 
     long minTime = sm.firstKey();
 
-    sm.forEach((t, s) -> System.out.printf("%d %.2f %.2f %d\n", (t - minTime), s.stats.getMean(),
-        s.stats.getStandardDeviation(), s.stats.getN()));
+    sm.forEach((t, s) -> System.out.printf("%d %.2f %.2f %d %d\n", (t - minTime), s.stats.getMean(),
+        s.stats.getStandardDeviation(), s.stats.getN(), s.compaction));
 
   }
 
