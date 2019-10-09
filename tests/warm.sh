@@ -13,9 +13,12 @@ cd $TESTS_DIR/..
   echo "config -t wct -s table.file.compress.type=snappy"
 ) | accumulo shell -u root -p secret
 
-./bin/run.sh cmd.Ingest wct 1000000 20 10 > results/ingest.out 2>results/ingest.err &
+./bin/run.sh cmd.Ingest wct 1000000 20 10 > results/ingest.out 2>results/ingest.err
 
 accumulo shell -u root -p secret -e 'flush -t wct -w'
+
+# give time for any splits
+sleep 3
 
 mkdir -p results
 
